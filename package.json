@@ -1,9 +1,14 @@
 {
+<<<<<<< HEAD
   "name": "ajitashokpawar.github.io",
+=======
+  "name": "my-app",
+>>>>>>> b8c4bfc4fea48610b135f830662a63543b7c3c64
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+<<<<<<< HEAD
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist -b gh-pages",
     "dev": "vite",
@@ -18,6 +23,17 @@
     "react": "^19.0.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
+=======
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -b gh-pages"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+>>>>>>> b8c4bfc4fea48610b135f830662a63543b7c3c64
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
@@ -28,6 +44,10 @@
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+<<<<<<< HEAD
+=======
+    "gh-pages": "^6.3.0",
+>>>>>>> b8c4bfc4fea48610b135f830662a63543b7c3c64
     "globals": "^15.15.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
