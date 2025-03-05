@@ -1,24 +1,32 @@
 {
-  "name": "chessApp",
-  "version": "0.1.0",
+  "name": "my-app",
   "private": true,
-  "devDependencies": {
-    "react-scripts": "0.8.5"
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -b gh-pages"
   },
   "dependencies": {
-    "react": "^15.4.2",
-    "react-dnd": "^2.1.4",
-    "react-dnd-html5-backend": "^2.1.2",
-    "react-dom": "^15.4.2",
-    "react-redux": "^5.0.2",
-    "redux": "^3.6.0",
-    "redux-branchable": "0.1.4",
-    "redux-optimist": "0.0.2"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "gh-pages": "^6.3.0",
+    "globals": "^15.15.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0"
   }
 }
