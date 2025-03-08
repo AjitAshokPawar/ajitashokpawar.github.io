@@ -40,21 +40,28 @@ function calculateResult() {
             .replace(/×/g, '*')
             .replace(/÷/g, '/')
             .replace(/√/g, 'Math.sqrt')
-            .replace(/%/g, '/100*')
+            .replace(/%/g, '/100')
             .replace(/sin/g, 'Math.sin')
             .replace(/cos/g, 'Math.cos')
             .replace(/tan/g, 'Math.tan');
 
-        // Add closing parenthesis if missing
-        const openParens = (expression.match(/\(/g) || []).length;
+        // Auto-close parentheses only for functions
+        const functionParens = (expression.match(/(sin|cos|tan|Math\.sqrt)\(/g) || []).length;
         const closeParens = (expression.match(/\)/g) || []).length;
-        expression += ')'.repeat(openParens - closeParens);
+        expression += ')'.repeat(functionParens - closeParens);
 
         const result = eval(expression);
         
         if (typeof result === 'number' && !isNaN(result)) {
-            historyValue = `${displayValue} =`;
-            displayValue = String(result.includes('.') ? result.toFixed(4) : result);
+            historyValue = `${displayValue}=`;
+            
+            // Fixed result formatting
+            if (Number.isInteger(result)) {
+                displayValue = result.toString();
+            } else {
+                displayValue = result.toFixed(4).replace(/\.?0+$/, '');
+            }
+            
             isNewCalculation = true;
             
             setTimeout(() => {
@@ -64,8 +71,10 @@ function calculateResult() {
         }
     } catch (error) {
         displayValue = 'Error';
+        updateDisplay();
         setTimeout(() => {
             displayValue = '0';
+            historyValue = '';
             updateDisplay();
         }, 1000);
     }
