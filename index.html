@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,6 @@
 <body>
     <div class="container">
         <div class="calculator">
-            <!-- Header -->
             <div class="calculator-header">
                 <div class="project-name">Snehulator</div>
                 <div class="theme-toggle">
@@ -23,12 +22,10 @@
                 </div>
             </div>
 
-            <!-- Display -->
             <div class="display">
                 <div class="current" id="display">0</div>
             </div>
 
-            <!-- Buttons -->
             <div class="buttons">
                 <button class="btn sci" data-value="sin(">sin</button>
                 <button class="btn sci" data-value="cos(">cos</button>
@@ -56,16 +53,16 @@
                 <button class="btn operator" data-value="+"><i class="fas fa-plus"></i></button>
             </div>
 
-            <!-- Designer Credit -->
             <div class="designer-credit">
                 Designed with <i class="fas fa-heart pulse"></i> by Ajit Pawar
             </div>
         </div>
     </div>
 
-    <!-- Background Effects -->
-    <div class="glow-effect"></div>
-    <div class="particles"></div>
+    <div class="background-effects">
+        <div class="glow-trail"></div>
+        <div class="particles"></div>
+    </div>
 
     <script src="script.js"></script>
 </body>

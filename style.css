@@ -50,7 +50,6 @@ body {
     padding: 1.5rem;
     box-shadow: var(--shadow);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transform: translateY(0);
     animation: float 4s ease-in-out infinite;
 }
 
@@ -59,7 +58,6 @@ body {
     50% { transform: translateY(-10px); }
 }
 
-/* Calculator Header */
 .calculator-header {
     display: flex;
     justify-content: space-between;
@@ -76,12 +74,6 @@ body {
     background-clip: text;
     color: transparent;
     text-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
-    letter-spacing: -1px;
-}
-
-.project-name span {
-    font-weight: 300;
-    opacity: 0.8;
 }
 
 .version {
@@ -89,7 +81,6 @@ body {
     color: rgba(255, 255, 255, 0.4);
 }
 
-/* Display */
 .display {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
@@ -104,10 +95,8 @@ body {
     font-weight: 300;
     text-align: right;
     min-height: 4rem;
-    letter-spacing: -1px;
 }
 
-/* Buttons */
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -124,27 +113,11 @@ body {
     color: var(--text);
     position: relative;
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.3s;
+    transition: transform 0.2s;
 }
 
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.1),
-        transparent
-    );
-    transition: 0.5s;
-}
-
-.btn:hover::before {
-    left: 100%;
+.btn:hover {
+    transform: translateY(-2px);
 }
 
 .btn:active {
@@ -168,7 +141,54 @@ body {
 .equals {
     background: #10b981;
     color: white;
-    grid-column: span 1;
+}
+
+/* Pop-out Animation */
+.pop-out-effect {
+    position: absolute;
+    animation: resultPopOut 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--primary);
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 1000;
+    filter: drop-shadow(0 0 15px var(--primary));
+}
+
+@keyframes resultPopOut {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    30% { transform: translateY(-100px) scale(1.5); opacity: 0.8; }
+    70% { transform: translateY(-150px) scale(1.8); opacity: 0.5; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.star-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    animation: starBlast 0.8s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes starBlast {
+    0% { transform: translate(0, 0) scale(0); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 0; }
+}
+
+.glow-trail {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+    filter: blur(30px);
+    opacity: 0.3;
+    animation: glowMove 1s ease-out forwards;
+}
+
+@keyframes glowMove {
+    0% { transform: translateY(0) scale(0.5); opacity: 0.5; }
+    100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
 }
 
 /* Theme Toggle */
@@ -208,7 +228,6 @@ body {
     font-size: 0.8rem;
     position: absolute;
     opacity: 0;
-    transition: opacity 0.3s;
 }
 
 .fa-sun { color: #ffd700; left: -25px; }
@@ -230,9 +249,6 @@ body {
 .designer-credit .fa-heart {
     color: #ef4444;
     margin: 0 0.3rem;
-}
-
-.pulse {
     animation: pulse 1.5s infinite;
 }
 
@@ -242,25 +258,7 @@ body {
     100% { transform: scale(1); }
 }
 
-/* Background Effects */
-.glow-effect {
-    position: fixed;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-    filter: blur(80px);
-    opacity: 0.1;
-    z-index: 1;
-    animation: glow 8s infinite;
-}
-
-@keyframes glow {
-    0%, 100% { transform: translate(0, 0); }
-    25% { transform: translate(100px, -100px); }
-    50% { transform: translate(-100px, 100px); }
-    75% { transform: translate(100px, 100px); }
-}
-
+/* Responsive Design */
 @media (max-width: 480px) {
     .container {
         padding: 1rem;
@@ -273,9 +271,5 @@ body {
     
     .current {
         font-size: 2.5rem;
-    }
-    
-    .project-name {
-        font-size: 1.5rem;
     }
 }
